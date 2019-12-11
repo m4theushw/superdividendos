@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from django.db import connection
 from django.shortcuts import render
 from django.db.models import Sum, Q
-from .models import Price
+from .models import Price, Ticker
 
 @api_view(['POST'])
 def calculate(request):
@@ -60,3 +60,18 @@ def calculate(request):
         })
 
     return Response(result)
+
+@api_view(['GET'])
+def search(request):
+    q = request.query_params['q'] if 'q' in request.query_params else ''
+    if q == '':
+        return Response([])
+
+    conditions = Q(code__icontains=q) | Q(company__name__icontains=q)
+    tickers = Ticker.objects.filter(conditions).order_by('code').all()[:20]
+
+    results = []
+    for ticker in tickers:
+        results.append({'ticker': ticker.code, 'name': ticker.company.name})
+
+    return Response(results)
