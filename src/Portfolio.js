@@ -1,9 +1,11 @@
-import React, { useState } from 'react'
+import React, { useReducer } from 'react'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import { makeStyles } from '@material-ui/core/styles'
 import PortfolioItem from './PortfolioItem'
 import PortfolioAdd from './PortfolioAdd'
+import reducer from './reducer'
+import { ADD_ITEM, DELETE_ITEM, UPDATE_ITEM } from './actions'
 
 const useStyles = makeStyles(theme => ({
   grid: {
@@ -39,26 +41,18 @@ const defaultItems = [
 
 const Portfolio = () => {
   const classes = useStyles()
-  const [items, setItems] = useState(defaultItems)
+  const [items, dispatch] = useReducer(reducer, defaultItems)
 
-  const updateItem = theItem => {
-    const updatedItems = items.map(item =>
-      item.id === theItem.id ? theItem : item
-    )
-    setItems(updatedItems)
+  const updateItem = item => {
+    dispatch({ type: UPDATE_ITEM, payload: item })
   }
 
   const addItem = () => {
-    const item = {
-      id: Date.now(),
-      asset: { ticker: 'MGLU3', name: 'MAGAZINE LUIZA S.A.' },
-      quantity: 100,
-    }
-    setItems([...items, item])
+    dispatch({ type: ADD_ITEM })
   }
 
-  const deleteItem = theItem => {
-    setItems(items.filter(item => item.id !== theItem.id))
+  const deleteItem = item => {
+    dispatch({ type: DELETE_ITEM, payload: item })
   }
 
   return (
