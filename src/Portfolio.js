@@ -1,6 +1,8 @@
 import React, { useReducer } from 'react'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
+import CircularProgress from '@material-ui/core/CircularProgress'
+import Box from '@material-ui/core/Box'
 import { makeStyles } from '@material-ui/core/styles'
 import PortfolioItem from './PortfolioItem'
 import PortfolioAdd from './PortfolioAdd'
@@ -19,10 +21,8 @@ const useStyles = makeStyles(theme => ({
       gridTemplateColumns: 'repeat(3, 1fr)',
     },
   },
-  button: {
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    display: 'block',
+  progress: {
+    marginRight: theme.spacing(1),
   },
 }))
 
@@ -39,7 +39,7 @@ const defaultItems = [
   },
 ]
 
-const Portfolio = () => {
+const Portfolio = ({ onCalculateClick, calculating }) => {
   const classes = useStyles()
   const [items, dispatch] = useReducer(reducer, defaultItems)
 
@@ -71,15 +71,25 @@ const Portfolio = () => {
         ))}
         <PortfolioAdd onClick={addItem} />
       </div>
-      <Button
-        variant="contained"
-        className={classes.button}
-        disabled={!items.length}
-        size="large"
-        color="primary"
-      >
-        Calcular
-      </Button>
+      <Box display="flex" justifyContent="center">
+        <Button
+          variant="contained"
+          size="large"
+          color="primary"
+          className={classes.button}
+          disabled={calculating || !items.length}
+          onClick={() => onCalculateClick(items)}
+        >
+          {calculating && (
+            <CircularProgress
+              size={18}
+              thickness={2}
+              className={classes.progress}
+            />
+          )}
+          {calculating ? 'Calculando' : 'Calcular'}
+        </Button>
+      </Box>
     </div>
   )
 }

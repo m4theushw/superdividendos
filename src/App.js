@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import { makeStyles } from '@material-ui/core/styles'
 import Portfolio from './Portfolio'
+import Chart from './Chart'
+import * as api from './api'
 
 const useStyles = makeStyles(theme => ({
   layout: {
@@ -22,12 +24,26 @@ const useStyles = makeStyles(theme => ({
 
 const App = () => {
   const classes = useStyles()
+  const [calculating, setCalculating] = useState(false)
+  const [estimate, setEstimate] = useState(null)
+
+  const handleCalculateClick = items => {
+    setCalculating(true)
+    api.calculate(items).then(response => {
+      setCalculating(false)
+      setEstimate(response)
+    })
+  }
 
   return (
     <>
       <CssBaseline />
       <main className={classes.layout}>
-        <Portfolio />
+        <Portfolio
+          calculating={calculating}
+          onCalculateClick={handleCalculateClick}
+        />
+        {estimate && <Chart data={estimate} />}
       </main>
     </>
   )
