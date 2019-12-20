@@ -39,9 +39,20 @@ const defaultItems = [
   },
 ]
 
+const getInitialItems = () => {
+  const savedItems = window.localStorage.getItem('portfolio')
+  if (!savedItems) return defaultItems
+
+  const now = Date.now()
+  const parsedItems = JSON.parse(savedItems)
+  return parsedItems.length
+    ? parsedItems.map((item, n) => ({ ...item, id: now + n }))
+    : defaultItems
+}
+
 const Portfolio = ({ onCalculateClick, calculating }) => {
   const classes = useStyles()
-  const [items, dispatch] = useReducer(reducer, defaultItems)
+  const [items, dispatch] = useReducer(reducer, getInitialItems())
 
   const updateItem = item => {
     dispatch({ type: UPDATE_ITEM, payload: item })
@@ -53,6 +64,12 @@ const Portfolio = ({ onCalculateClick, calculating }) => {
 
   const deleteItem = item => {
     dispatch({ type: DELETE_ITEM, payload: item })
+  }
+
+  const handleCalculateClick = () => {
+    const itemsWithoutId = items.map(({ id, ...rest }) => rest)
+    window.localStorage.setItem('portfolio', JSON.stringify(itemsWithoutId))
+    onCalculateClick(items)
   }
 
   return (
@@ -78,7 +95,7 @@ const Portfolio = ({ onCalculateClick, calculating }) => {
           color="primary"
           className={classes.button}
           disabled={calculating || !items.length}
-          onClick={() => onCalculateClick(items)}
+          onClick={handleCalculateClick}
         >
           {calculating && (
             <CircularProgress
