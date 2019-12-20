@@ -81,7 +81,7 @@ const Search = ({ anchorEl, onClose, onChange }) => {
   useEffect(() => {
     if (inputValue === '') {
       setOptions([])
-      return undefined
+      return
     }
 
     fetch(inputValue, results => {
