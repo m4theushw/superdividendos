@@ -7,7 +7,8 @@
     "start": "node server.js",
     "build": "parcel build public/index.html",
     "lint": "eslint src/*.js",
-    "prettier": "prettier --write src/*.js *.js"
+    "prettier": "prettier --write src/*.js *.js",
+    "test": "jest"
   },
   "dependencies": {
     "@material-ui/core": "^4.7.0",
@@ -22,7 +23,11 @@
     "recharts": "^2.0.0-beta.1"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.7.7",
+    "@babel/preset-react": "^7.7.4",
+    "@testing-library/react": "^9.4.0",
     "babel-eslint": "^10.0.3",
+    "babel-jest": "^24.9.0",
     "eslint": "^6.7.2",
     "eslint-config-prettier": "^6.7.0",
     "eslint-config-react-app": "^5.1.0",
@@ -32,6 +37,13 @@
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react": "^7.17.0",
     "eslint-plugin-react-hooks": "^2.3.0",
+    "jest": "^24.9.0",
     "parcel-bundler": "^1.12.4"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+    ]
   }
 }

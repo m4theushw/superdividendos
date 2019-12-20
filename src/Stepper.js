@@ -36,11 +36,7 @@ const Stepper = ({ value, onChange }) => {
   return (
     <Grid justify="center" alignItems="center" spacing={1} container>
       <Grid item>
-        <IconButton
-          size="small"
-          aria-label="Diminuir"
-          onClick={handleDecrement}
-        >
+        <IconButton size="small" title="Diminuir" onClick={handleDecrement}>
           <RemoveCircleIcon htmlColor={red[500]} />
         </IconButton>
       </Grid>
@@ -50,15 +46,11 @@ const Stepper = ({ value, onChange }) => {
           size="small"
           onChange={handleChange}
           variant="outlined"
-          inputProps={{ className: classes.input }}
+          inputProps={{ className: classes.input, title: 'Quantidade' }}
         />
       </Grid>
       <Grid item>
-        <IconButton
-          size="small"
-          aria-label="Aumentar"
-          onClick={handleIncrement}
-        >
+        <IconButton size="small" title="Aumentar" onClick={handleIncrement}>
           <AddCircleIcon htmlColor={green[500]} />
         </IconButton>
       </Grid>
