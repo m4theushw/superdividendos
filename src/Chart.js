@@ -35,12 +35,12 @@ const useStyles = makeStyles(theme => ({
     paddingBottom: theme.spacing(2) + 10,
     color: theme.palette.primary.contrastText,
     marginBottom: -10,
-    borderRadius: theme.shape.borderRadius
+    borderRadius: theme.shape.borderRadius,
   },
   chart: {
     display: 'flex',
     justifyContent: 'center',
-    padding: theme.spacing(4)
+    padding: theme.spacing(4),
   },
 }))
 
@@ -49,9 +49,9 @@ const Chart = ({ data }) => {
 
   return (
     <div className={classes.root}>
-        <div className={classes.header}>
-          <Typography variant="h6">Estimativa</Typography>
-        </div>
+      <div className={classes.header}>
+        <Typography variant="h6">Estimativa</Typography>
+      </div>
       <Paper className={classes.paper}>
         <div className={classes.chart}>
           <ResponsiveContainer width="100%" height={300}>
@@ -64,7 +64,7 @@ const Chart = ({ data }) => {
               <Tooltip formatter={formatter} />
               <Bar
                 dataKey="dividend_paid"
-                name="Proventos Pagos"
+                name="Proventos Declarados"
                 yAxisId={0}
                 barSize={20}
                 fill={cyan[500]}
