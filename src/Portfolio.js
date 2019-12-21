@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react'
+import React, { useReducer, useCallback } from 'react'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import CircularProgress from '@material-ui/core/CircularProgress'
@@ -55,17 +55,17 @@ const Portfolio = ({ onCalculateClick, calculating }) => {
   const classes = useStyles()
   const [items, dispatch] = useReducer(reducer, getInitialItems())
 
-  const updateItem = item => {
+  const updateItem = useCallback(item => {
     dispatch({ type: UPDATE_ITEM, payload: item })
-  }
+  }, [])
 
   const addItem = () => {
     dispatch({ type: ADD_ITEM })
   }
 
-  const deleteItem = item => {
+  const deleteItem = useCallback(item => {
     dispatch({ type: DELETE_ITEM, payload: item })
-  }
+  }, [])
 
   const handleCalculateClick = () => {
     const itemsWithoutId = items.map(({ id, ...rest }) => rest)

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, memo } from 'react'
 import Typography from '@material-ui/core/Typography'
 import Divider from '@material-ui/core/Divider'
 import Paper from '@material-ui/core/Paper'
@@ -35,7 +35,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const PortfolioItem = ({ item, onChange, onDelete }) => {
+const PortfolioItem = memo(({ item, onChange, onDelete }) => {
   const classes = useStyles()
   const { asset, quantity } = item
   const [anchorEl, setAnchorEl] = useState(null)
@@ -89,7 +89,7 @@ const PortfolioItem = ({ item, onChange, onDelete }) => {
       <Search anchorEl={anchorEl} onClose={handleClose} onChange={setAsset} />
     </Paper>
   )
-}
+})
 
 PortfolioItem.propTypes = {
   item: PropTypes.shape({
