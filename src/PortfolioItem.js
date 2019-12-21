@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import Typography from '@material-ui/core/Typography'
 import Divider from '@material-ui/core/Divider'
 import Paper from '@material-ui/core/Paper'
@@ -39,6 +39,7 @@ const PortfolioItem = ({ item, onChange, onDelete }) => {
   const classes = useStyles()
   const { asset, quantity } = item
   const [anchorEl, setAnchorEl] = useState(null)
+  const ref = useRef()
 
   const handleClick = event => {
     setAnchorEl(event.target)
@@ -51,6 +52,7 @@ const PortfolioItem = ({ item, onChange, onDelete }) => {
   const setAsset = (event, value) => {
     onChange({ ...item, asset: value })
     setAnchorEl(null)
+    ref.current.focus()
   }
 
   const setQuantity = value => {
@@ -83,7 +85,7 @@ const PortfolioItem = ({ item, onChange, onDelete }) => {
         </Typography>
       </div>
       <Divider classes={{ root: classes.divider }} />
-      <Stepper value={quantity} onChange={setQuantity} />
+      <Stepper value={quantity} onChange={setQuantity} inputRef={ref} />
       <Search anchorEl={anchorEl} onClose={handleClose} onChange={setAsset} />
     </Paper>
   )

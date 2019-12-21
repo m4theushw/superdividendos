@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const Stepper = ({ value, onChange }) => {
+const Stepper = ({ value, onChange, inputRef }) => {
   const classes = useStyles()
 
   const handleChange = ({ target }) => {
@@ -46,6 +46,7 @@ const Stepper = ({ value, onChange }) => {
           size="small"
           onChange={handleChange}
           variant="outlined"
+          inputRef={inputRef}
           inputProps={{ className: classes.input, title: 'Quantidade' }}
         />
       </Grid>
