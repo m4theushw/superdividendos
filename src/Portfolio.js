@@ -7,6 +7,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import PortfolioItem from './PortfolioItem'
 import PortfolioAdd from './PortfolioAdd'
 import reducer from './reducer'
+import PropTypes from 'prop-types'
 import { ADD_ITEM, DELETE_ITEM, UPDATE_ITEM } from './actions'
 
 const useStyles = makeStyles(theme => ({
@@ -109,6 +110,11 @@ const Portfolio = ({ onCalculateClick, calculating }) => {
       </Box>
     </div>
   )
+}
+
+Portfolio.propTypes = {
+  calculating: PropTypes.bool,
+  onCalculateClick: PropTypes.func.isRequired,
 }
 
 export default Portfolio

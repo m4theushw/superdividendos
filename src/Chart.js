@@ -1,11 +1,11 @@
 import React from 'react'
 import Paper from '@material-ui/core/Paper'
-import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 import blue from '@material-ui/core/colors/blue'
 import cyan from '@material-ui/core/colors/cyan'
 import amber from '@material-ui/core/colors/amber'
+import PropTypes from 'prop-types'
 import {
   ComposedChart,
   ResponsiveContainer,
@@ -89,6 +89,10 @@ const Chart = ({ data }) => {
       </Paper>
     </div>
   )
+}
+
+Chart.propTypes = {
+  data: PropTypes.arrayOf(PropTypes.array).isRequired,
 }
 
 export default Chart
