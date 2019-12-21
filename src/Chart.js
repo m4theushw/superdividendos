@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
@@ -44,11 +44,11 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const Chart = ({ data }) => {
+const Chart = forwardRef(({ data }, ref) => {
   const classes = useStyles()
 
   return (
-    <div className={classes.root}>
+    <div ref={ref} className={classes.root}>
       <div className={classes.header}>
         <Typography variant="h6">Estimativa</Typography>
       </div>
@@ -89,10 +89,10 @@ const Chart = ({ data }) => {
       </Paper>
     </div>
   )
-}
+})
 
 Chart.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.array).isRequired,
+  data: PropTypes.arrayOf(PropTypes.object).isRequired,
 }
 
 export default Chart
