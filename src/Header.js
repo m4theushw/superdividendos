@@ -7,15 +7,19 @@ import watermark from './watermark.png'
 const useStyles = makeStyles(theme => ({
   root: {
     textAlign: 'center',
-    padding: theme.spacing(8),
+    padding: theme.spacing(4),
     color: theme.palette.common.white,
     backgroundColor: theme.palette.primary.main,
     backgroundImage: `url(${watermark})`,
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
+    [theme.breakpoints.up(600 + theme.spacing(2) * 2)]: {
+      padding: theme.spacing(8),
+    },
   },
   logo: {
-    height: 80,
+    maxWidth: '100%',
+    maxHeight: 80,
     marginBottom: theme.spacing(6),
   },
 }))
@@ -28,7 +32,9 @@ const Header = () => {
       <Typography variant="h5" paragraph>
         Quanto sua carteira rendeu em dividendos no último ano?
       </Typography>
-      <Typography variant="h6">Adicione abaixo seus ativos e descubra.</Typography>
+      <Typography variant="h6">
+        Adicione abaixo seus ativos e descubra.
+      </Typography>
     </div>
   )
 }
