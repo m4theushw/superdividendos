@@ -1,0 +1,8 @@
+.DS_Store
+.dockerignore
+.git/
+.gitignore
+node_modules/
+data/
+*.pyc
+__pycache__
