@@ -1,8 +1,13 @@
 import React, { useState } from 'react'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import { makeStyles } from '@material-ui/core/styles'
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles'
+import purple from '@material-ui/core/colors/purple'
+import grey from '@material-ui/core/colors/grey'
 import Portfolio from './Portfolio'
 import Chart from './Chart'
+import Header from './Header'
+import Footer from './Footer'
 import * as api from './api'
 import useScrollToRef from './useScrollToRef'
 
@@ -17,11 +22,30 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.up(900 + theme.spacing(2) * 2)]: {
       width: 900,
-      marginLeft: 'auto',
-      marginRight: 'auto',
     },
   },
 }))
+
+const theme = createMuiTheme({
+  typography: {
+    fontFamily: [
+      'Poppins',
+      'Arial',
+      'sans-serif',
+    ].join(',')
+  },
+  palette: {
+    primary: {
+      main: purple[800],
+    },
+    background: {
+      default: grey[100],
+    }
+  },
+  shape: {
+    borderRadius: 8
+  }
+})
 
 const App = () => {
   const classes = useStyles()
@@ -39,16 +63,18 @@ const App = () => {
   }
 
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <CssBaseline />
+      <Header />
       <main className={classes.layout}>
         <Portfolio
           calculating={calculating}
           onCalculateClick={handleCalculateClick}
         />
         {estimate && <Chart ref={ref} data={estimate} />}
+        <Footer />
       </main>
-    </>
+    </ThemeProvider>
   )
 }
 

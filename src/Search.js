@@ -11,7 +11,7 @@ const useStyles = makeStyles(theme => ({
   popper: {
     border: '1px solid rgba(27,31,35,.15)',
     boxShadow: '0 3px 12px rgba(27,31,35,.15)',
-    borderRadius: 3,
+    borderRadius: theme.shape.borderRadius,
     width: 300,
     zIndex: 1,
     fontSize: 13,
@@ -31,7 +31,7 @@ const useStyles = makeStyles(theme => ({
     width: '100%',
     borderBottom: '1px solid #dfe2e5',
     '& input': {
-      borderRadius: 4,
+      borderRadius: theme.shape.borderRadius,
       backgroundColor: theme.palette.common.white,
       padding: 8,
       border: '1px solid #ced4da',

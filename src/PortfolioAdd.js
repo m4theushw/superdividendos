@@ -4,11 +4,11 @@ import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline'
 import { makeStyles } from '@material-ui/core/styles'
 import PropTypes from 'prop-types'
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   box: {
     minHeight: 170,
     border: `1px dashed #000`,
-    borderRadius: '4px',
+    borderRadius: theme.shape.borderRadius,
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -20,7 +20,7 @@ const useStyles = makeStyles({
     width: '2em',
     height: '2em',
   },
-})
+}))
 
 const PortfolioAdd = ({ onClick }) => {
   const classes = useStyles()

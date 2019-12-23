@@ -57,7 +57,7 @@ const Chart = forwardRef(({ data }, ref) => {
           <ResponsiveContainer width="100%" height={300}>
             <ComposedChart data={data} margin={{ left: 20, right: 20 }}>
               <XAxis dataKey="year" />
-              <YAxis yAxisId={0} hide />
+              <YAxis yAxisId={0} hide/>
               <YAxis yAxisId={1} hide />
               <YAxis yAxisId={2} hide />
               <Legend />

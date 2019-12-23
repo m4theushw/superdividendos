@@ -75,7 +75,7 @@ const PortfolioItem = memo(({ item, onChange, onDelete }) => {
         <DeleteIcon />
       </IconButton>
       <div className={classes.header} onClick={handleClick}>
-        <Typography variant="h4">{asset.ticker}</Typography>
+        <Typography color="primary" variant="h4">{asset.ticker}</Typography>
         <Typography
           variant="subtitle1"
           className={classes.name}
