@@ -3,6 +3,7 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 import { makeStyles } from '@material-ui/core/styles'
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles'
 import purple from '@material-ui/core/colors/purple'
+import pink from '@material-ui/core/colors/pink'
 import grey from '@material-ui/core/colors/grey'
 import Portfolio from './Portfolio'
 import Chart from './Chart'
@@ -28,23 +29,23 @@ const useStyles = makeStyles(theme => ({
 
 const theme = createMuiTheme({
   typography: {
-    fontFamily: [
-      'Poppins',
-      'Arial',
-      'sans-serif',
-    ].join(',')
+    fontFamily: ['Poppins', 'Arial', 'sans-serif'].join(','),
   },
   palette: {
     primary: {
       main: purple[800],
+      light: purple[400],
+    },
+    secondary: {
+      main: pink[500],
     },
     background: {
       default: grey[100],
-    }
+    },
   },
   shape: {
-    borderRadius: 8
-  }
+    borderRadius: 8,
+  },
 })
 
 const App = () => {

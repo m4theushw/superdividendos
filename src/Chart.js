@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react'
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles, useTheme } from '@material-ui/core/styles'
 import blue from '@material-ui/core/colors/blue'
 import cyan from '@material-ui/core/colors/cyan'
 import amber from '@material-ui/core/colors/amber'
@@ -46,6 +46,7 @@ const useStyles = makeStyles(theme => ({
 
 const Chart = forwardRef(({ data }, ref) => {
   const classes = useStyles()
+  const theme = useTheme()
 
   return (
     <div ref={ref} className={classes.root}>
@@ -67,20 +68,20 @@ const Chart = forwardRef(({ data }, ref) => {
                 name="Proventos Declarados"
                 yAxisId={0}
                 barSize={20}
-                fill={cyan[500]}
+                fill={theme.palette.primary.main}
               />
               <Bar
                 dataKey="portfolio_cost"
                 name="Custo da Carteira"
                 yAxisId={1}
                 barSize={20}
-                fill={blue[500]}
+                fill={theme.palette.primary.light}
               />
               <Line
                 dataKey="dividend_yield"
                 name="Dividend Yield"
                 yAxisId={2}
-                stroke={amber[500]}
+                stroke={theme.palette.secondary.main}
                 strokeWidth={2}
               />
             </ComposedChart>
