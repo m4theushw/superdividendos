@@ -1,0 +1,61 @@
+version: '3.1'
+
+services:
+  db:
+    restart: always
+    image: mariadb
+    container_name: superdividendos_db
+    environment:
+      MYSQL_USER: ${DB_USER}
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+    volumes:
+      - dbdata:/var/lib/mysql
+    networks:
+      - internal
+      - web
+
+  nginx:
+    image: nginx
+    container_name: superdividendos_nginx
+    restart: always
+    volumes:
+      - ./config:/etc/nginx/conf.d
+      - staticfiles:/static
+    networks:
+      - internal
+      - web
+    depends_on:
+      - web
+    labels:
+      - 'traefik.http.routers.superdividendos.rule=Host(`superdividendos.online`)'
+      - 'traefik.http.routers.superdividendos.tls.certresolver=superdividendos'
+      - 'traefik.http.routers.superdividendos.entrypoints=websecure'
+      - 'traefik.enable=true'
+      - 'traefik.docker.network=web'
+
+  web:
+    build: .
+    container_name: superdividendos_web
+    restart: always
+    command: python manage.py runserver 0.0.0.0:8000
+    networks:
+      - internal
+    volumes:
+      - staticfiles:/code/static
+      - ./data:/code/data
+    depends_on:
+      - db
+    expose:
+      - '8000'
+
+volumes:
+  staticfiles:
+  dbdata:
+
+networks:
+  web:
+    external: true
+  internal:
+    external: false
