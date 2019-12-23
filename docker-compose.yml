@@ -29,9 +29,12 @@ services:
     depends_on:
       - web
     labels:
+      - 'traefik.http.routers.superdividendos_secure.rule=Host(`superdividendos.com.br`)'
+      - 'traefik.http.routers.superdividendos_secure.tls.certresolver=superdividendos'
+      - 'traefik.http.routers.superdividendos_secure.entrypoints=websecure'
       - 'traefik.http.routers.superdividendos.rule=Host(`superdividendos.com.br`)'
-      - 'traefik.http.routers.superdividendos.tls.certresolver=superdividendos'
-      - 'traefik.http.routers.superdividendos.entrypoints=websecure'
+      - 'traefik.http.routers.superdividendos.entrypoints=web'
+      - 'traefik.http.routers.superdividendos.middlewares=redirect-to-https'
       - 'traefik.enable=true'
       - 'traefik.docker.network=web'
 
