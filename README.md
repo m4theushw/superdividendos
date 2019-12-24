@@ -1,5 +1,8 @@
 # Super Dividendos
 
+[![Build Status](https://travis-ci.com/m4theushw/superdividendos.svg?branch=master)](https://travis-ci.com/m4theushw/superdividendos) 
+[![codecov](https://codecov.io/gh/m4theushw/superdividendos/branch/master/graph/badge.svg)](https://codecov.io/gh/m4theushw/superdividendos)
+
 A personal project I created to calculate the yields of a portfolio composed by stocks listed in B3 (Brazilian Stock Exchange). It works by scraping data from B3's website and plotting it on a chart. The website was built with React, Python, Django and Material-UI.
 
 ## Installation
