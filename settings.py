@@ -128,6 +128,14 @@ USE_L10N = True
 
 USE_TZ = True
 
+# Django REST Framework
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+    )
+}
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
