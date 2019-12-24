@@ -2,6 +2,7 @@ __pycache__/
 data/
 dist/
 node_modules/
+coverage/
 .cache/
 .env
 yarn-error.log
