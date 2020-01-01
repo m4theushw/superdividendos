@@ -36,7 +36,7 @@ class Command(BaseCommand):
                 obj = Price(date=date, value=value, ticker=tickers[ticker])
                 objs.append(obj)
 
-        Price.objects.bulk_create(objs)
+        Price.objects.bulk_create(objs, batch_size=1000)
         print('{:,} objects created'.format(Price.objects.filter(date__year=year).count()))
 
     def to_float(self, value):
