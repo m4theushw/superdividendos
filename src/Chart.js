@@ -1,6 +1,4 @@
-import React, { forwardRef } from 'react'
-import Paper from '@material-ui/core/Paper'
-import Typography from '@material-ui/core/Typography'
+import React from 'react'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 import blue from '@material-ui/core/colors/blue'
 import cyan from '@material-ui/core/colors/cyan'
@@ -26,17 +24,6 @@ const formatter = (value, name, props) => {
 }
 
 const useStyles = makeStyles(theme => ({
-  root: {
-    marginTop: theme.spacing(12),
-  },
-  header: {
-    backgroundColor: theme.palette.primary.main,
-    padding: theme.spacing(2),
-    paddingBottom: theme.spacing(2) + 10,
-    color: theme.palette.primary.contrastText,
-    marginBottom: -10,
-    borderRadius: theme.shape.borderRadius,
-  },
   chart: {
     display: 'flex',
     justifyContent: 'center',
@@ -44,53 +31,46 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const Chart = forwardRef(({ data }, ref) => {
+const Chart = ({ data }) => {
   const classes = useStyles()
   const theme = useTheme()
 
   return (
-    <div ref={ref} className={classes.root}>
-      <div className={classes.header}>
-        <Typography variant="h6">Estimativa</Typography>
-      </div>
-      <Paper className={classes.paper}>
-        <div className={classes.chart}>
-          <ResponsiveContainer width="100%" height={300}>
-            <ComposedChart data={data} margin={{ left: 20, right: 20 }}>
-              <XAxis dataKey="year" />
-              <YAxis yAxisId={0} hide/>
-              <YAxis yAxisId={1} hide />
-              <YAxis yAxisId={2} hide />
-              <Legend />
-              <Tooltip formatter={formatter} />
-              <Bar
-                dataKey="dividend_paid"
-                name="Proventos Declarados"
-                yAxisId={0}
-                barSize={20}
-                fill={theme.palette.primary.main}
-              />
-              <Bar
-                dataKey="portfolio_cost"
-                name="Custo da Carteira"
-                yAxisId={1}
-                barSize={20}
-                fill={theme.palette.primary.light}
-              />
-              <Line
-                dataKey="dividend_yield"
-                name="Dividend Yield"
-                yAxisId={2}
-                stroke={theme.palette.secondary.main}
-                strokeWidth={2}
-              />
-            </ComposedChart>
-          </ResponsiveContainer>
-        </div>
-      </Paper>
+    <div className={classes.chart}>
+      <ResponsiveContainer width="100%" height={300}>
+        <ComposedChart data={data} margin={{ left: 20, right: 20 }}>
+          <XAxis dataKey="year" />
+          <YAxis yAxisId={0} hide />
+          <YAxis yAxisId={1} hide />
+          <YAxis yAxisId={2} hide />
+          <Legend />
+          <Tooltip formatter={formatter} />
+          <Bar
+            dataKey="dividend_paid"
+            name="Proventos Declarados"
+            yAxisId={0}
+            barSize={20}
+            fill={theme.palette.primary.main}
+          />
+          <Bar
+            dataKey="portfolio_cost"
+            name="Custo da Carteira"
+            yAxisId={1}
+            barSize={20}
+            fill={theme.palette.primary.light}
+          />
+          <Line
+            dataKey="dividend_yield"
+            name="Dividend Yield"
+            yAxisId={2}
+            stroke={theme.palette.secondary.main}
+            strokeWidth={2}
+          />
+        </ComposedChart>
+      </ResponsiveContainer>
     </div>
   )
-})
+}
 
 Chart.propTypes = {
   data: PropTypes.arrayOf(PropTypes.object).isRequired,

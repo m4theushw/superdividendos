@@ -6,7 +6,7 @@ import purple from '@material-ui/core/colors/purple'
 import pink from '@material-ui/core/colors/pink'
 import grey from '@material-ui/core/colors/grey'
 import Portfolio from './Portfolio'
-import Chart from './Chart'
+import Estimate from './Estimate'
 import Header from './Header'
 import Footer from './Footer'
 import * as api from './api'
@@ -72,7 +72,7 @@ const App = () => {
           calculating={calculating}
           onCalculateClick={handleCalculateClick}
         />
-        {estimate && <Chart ref={ref} data={estimate} />}
+        {estimate && <Estimate ref={ref} data={estimate} />}
         <Footer />
       </main>
     </ThemeProvider>

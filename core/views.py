@@ -16,7 +16,7 @@ def calculate(request):
 
     result = []
     today = date.today()
-    for year in range(today.year - 10, today.year):
+    for year in range(today.year - 10, today.year + 1):
         queryset = Price.objects.filter(date__year=year, ticker__in=assets.keys())
         compiler = connection.ops.compiler(queryset.query.compiler)(queryset.query, connection, None)
         queryset_where_tuple = queryset.query.where.as_sql(compiler, connection)
