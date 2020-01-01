@@ -27,7 +27,7 @@ const List = ({ data }) => {
 
   return (
     <div>
-      {data.reverse().map(item => (
+      {[...data].reverse().map(item => (
         <div className={classes.item} key={item.year}>
           <Typography variant="h4">{item.year}</Typography>
           <Box flex="1" textAlign="center">
@@ -35,7 +35,7 @@ const List = ({ data }) => {
               Proventos Declarados: {formatCurrency(item.dividend_paid)}
             </Box>
             <Box color={theme.palette.primary.light}>
-              Custo da Carteiras: {formatCurrency(item.portfolio_cost)}
+              Custo da Carteira: {formatCurrency(item.portfolio_cost)}
             </Box>
             <Box color={theme.palette.secondary.main}>
               Dividend Yield: {formatPercentage(item.dividend_yield)}
