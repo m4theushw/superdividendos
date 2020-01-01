@@ -1,7 +1,15 @@
-# Super Dividendos
+<p align="center">
+  <a href="https://superdividendos.com.br" rel="noopener" target="_blank"><img width="350" alt="Super Dividendos' logo" src="https://raw.githubusercontent.com/m4theushw/superdividendos/master/assets/logo.png">
+  </a>
+</p>
+
+<div align="center">
 
 [![Build Status](https://travis-ci.com/m4theushw/superdividendos.svg?branch=master)](https://travis-ci.com/m4theushw/superdividendos) 
 [![codecov](https://codecov.io/gh/m4theushw/superdividendos/branch/master/graph/badge.svg)](https://codecov.io/gh/m4theushw/superdividendos)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+
+</div>
 
 A personal project I created to calculate the yields of a portfolio composed by stocks listed in B3 (Brazilian Stock Exchange). It works by scraping data from B3's website and plotting it on a chart. The website was built with React, Python, Django and Material-UI.
 
