@@ -30,10 +30,10 @@ const Header = () => {
     <div className={classes.root}>
       <img className={classes.logo} src={logo} alt="Logotipo" />
       <Typography variant="h5" paragraph>
-        Quanto sua carteira rendeu em dividendos no último ano?
+        Planeje quanto sua carteira renderá em dividendos
       </Typography>
       <Typography variant="h6">
-        Adicione abaixo seus ativos e descubra.
+        Comece adicionando seus ativos abaixo
       </Typography>
     </div>
   )
