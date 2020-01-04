@@ -15,6 +15,9 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'column',
     padding: [[theme.spacing(2), theme.spacing(4)]],
     borderBottom: `1px solid ${theme.palette.divider}`,
+    '&:last-child': {
+      borderBottom: 0,
+    },
     [theme.breakpoints.up('sm')]: {
       flexDirection: 'row',
     },
