@@ -11,13 +11,13 @@
 
 </div>
 
-A personal project I created to calculate the yields of a portfolio composed by stocks listed in B3 (Brazilian Stock Exchange). It works by scraping data from B3's website and plotting it on a chart. The website was built with React, Python, Django and Material-UI.
+This is a personal project I created to help me to calculate the yields of a portfolio composed by stocks listed in B3 (Brazilian Stock Exchange). It works by scraping data from B3's website and plotting it on a chart. The website was built with React, Python, Django and Material-UI.
 
 ## Installation
 
 #### Requirements
 
-This project requires [Python 3](http://python.org/), [Node 12](https://nodejs.org/), [MariaDB](https://mariadb.org/) 10 and [Yarn](https://yarnpkg.com/lang/en/). Once you have `pip` and `yarn` available install the dependencies:
+This project requires [Python 3](http://python.org/), [Node 12](https://nodejs.org/), [MariaDB 10](https://mariadb.org/) and [Yarn](https://yarnpkg.com/lang/en/). Once you have `pip` and `yarn` available install the dependencies:
 
 ```shell
 $ pip install -r requirements.txt
