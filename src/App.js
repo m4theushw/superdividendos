@@ -9,6 +9,7 @@ import Portfolio from './Portfolio'
 import Estimate from './Estimate'
 import Header from './Header'
 import Footer from './Footer'
+import Faq from './Faq'
 import * as api from './api'
 import useScrollToRef from './useScrollToRef'
 
@@ -73,6 +74,7 @@ const App = () => {
           onCalculateClick={handleCalculateClick}
         />
         {estimate && <Estimate ref={ref} data={estimate} />}
+        <Faq />
         <Footer />
       </main>
     </ThemeProvider>
