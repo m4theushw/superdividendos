@@ -1,8 +1,5 @@
 import React from 'react'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
-import blue from '@material-ui/core/colors/blue'
-import cyan from '@material-ui/core/colors/cyan'
-import amber from '@material-ui/core/colors/amber'
 import PropTypes from 'prop-types'
 import {
   ComposedChart,

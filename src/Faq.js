@@ -4,7 +4,6 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary'
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import Typography from '@material-ui/core/Typography'
-import Box from '@material-ui/core/Box'
 import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles(theme => ({
@@ -46,6 +45,7 @@ const Faq = () => {
               <a
                 href="https://pt.wikipedia.org/wiki/Comprar_e_manter"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 <strong>buy-and-hold</strong>.
               </a>
@@ -61,7 +61,11 @@ const Faq = () => {
           <ExpansionPanelDetails>
             <Typography>
               Todos os dados são extraídos automaticamente do site da{' '}
-              <a href="http://www.b3.com.br/pt_br/" target="_blank">
+              <a
+                href="http://www.b3.com.br/pt_br/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 B3
               </a>
               .
@@ -101,7 +105,7 @@ const Faq = () => {
         <ExpansionPanel expanded={expanded === 5} onChange={handleChange(5)}>
           <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
             <Typography className={classes.heading}>
-              O que é "custo da carteira"?
+              O que é &quot;custo da carteira&quot;?
             </Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
@@ -117,7 +121,7 @@ const Faq = () => {
         <ExpansionPanel expanded={expanded === 6} onChange={handleChange(6)}>
           <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
             <Typography className={classes.heading}>
-              O que é "dividend yield"?
+              O que é &quot;dividend yield&quot;?
             </Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>

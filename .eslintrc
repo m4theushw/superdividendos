@@ -4,11 +4,7 @@
       "version": "detect"
     }
   },
-  "extends": [
-    "react-app",
-    "plugin:react/recommended",
-    "prettier/react"
-  ],
+  "extends": ["react-app", "plugin:react/recommended", "prettier/react"],
   "plugins": ["react", "react-hooks", "prettier"],
   "env": {
     "es6": true,
@@ -21,5 +17,8 @@
       "jsx": true,
       "modules": true
     }
+  },
+  "rules": {
+    "react/display-name": "off"
   }
 }

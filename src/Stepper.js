@@ -62,6 +62,7 @@ const Stepper = ({ value, onChange, inputRef }) => {
 Stepper.propTypes = {
   value: PropTypes.number.isRequired,
   onChange: PropTypes.func.isRequired,
+  inputRef: PropTypes.object.isRequired,
 }
 
 export default Stepper

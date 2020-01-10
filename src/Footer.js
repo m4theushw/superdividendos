@@ -1,6 +1,4 @@
 import React from 'react'
-import Divider from '@material-ui/core/Divider'
-import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 
@@ -19,7 +17,14 @@ const Footer = () => {
   return (
     <div className={classes.root}>
       <Typography variant="body2">
-        Criado por <a href="https://github.com/m4theushw/superdividendos" target="_blank">Matheus Wichman</a>
+        Criado por{' '}
+        <a
+          href="https://github.com/m4theushw/superdividendos"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Matheus Wichman
+        </a>
       </Typography>
     </div>
   )

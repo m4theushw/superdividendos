@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, fireEvent, wait } from '@testing-library/react'
+import { render, fireEvent } from '@testing-library/react'
 import PortfolioItem from './PortfolioItem'
 
 jest.mock('./Search', () => ({ onChange }) => (
@@ -10,7 +10,7 @@ jest.mock('./Search', () => ({ onChange }) => (
 
 describe('<PortfolioItem />', () => {
   it('focus on the quantity input when a ticker is selected', async () => {
-    const { getByText, getByTitle, debug } = render(
+    const { getByText, getByTitle } = render(
       <PortfolioItem
         onChange={jest.fn()}
         onDelete={jest.fn()}
