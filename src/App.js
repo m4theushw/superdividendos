@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import { makeStyles } from '@material-ui/core/styles'
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles'
@@ -11,9 +11,13 @@ import Header from './Header'
 import Footer from './Footer'
 import Faq from './Faq'
 import * as api from './api'
-import useScrollToRef from './useScrollToRef'
 
 const useStyles = makeStyles(theme => ({
+  '@global': {
+    html: {
+      scrollBehavior: 'smooth'
+    }
+  },
   layout: {
     width: 'auto',
     padding: theme.spacing(2),
@@ -53,14 +57,14 @@ const App = () => {
   const classes = useStyles()
   const [calculating, setCalculating] = useState(false)
   const [estimate, setEstimate] = useState(null)
-  const [ref, scrollToChart] = useScrollToRef()
+  const ref = useRef()
 
   const handleCalculateClick = items => {
     setCalculating(true)
     api.calculate(items).then(response => {
       setCalculating(false)
       setEstimate(response)
-      scrollToChart()
+      ref.current.scrollIntoView()
     })
   }
 
