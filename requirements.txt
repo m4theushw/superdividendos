@@ -1,5 +1,5 @@
 asgiref==3.2.3
-Django==3.0
+Django==3.0.3
 djangorestframework==3.10.3
 mysqlclient==1.4.6
 python-decouple==3.3
