@@ -25,5 +25,5 @@ class Dividend(models.Model):
 
 class Price(models.Model):
     date = models.DateField()
-    ticker = models.ForeignKey(Ticker, related_name='prices', on_delete=models.CASCADE)
+    ticker = models.CharField(max_length=6, db_index=True)
     value = models.DecimalField(max_digits=14, decimal_places=2)

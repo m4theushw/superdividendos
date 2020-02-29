@@ -25,21 +25,21 @@ def calculate(request):
 
         sql = """
             WITH last_prices AS (
-                SELECT max(date) AS date, ticker_id
+                SELECT max(date) AS date, ticker
                   FROM core_price
                  WHERE {where}
-                 GROUP BY ticker_id
+                 GROUP BY ticker
             )
 
-               SELECT core_price.ticker_id,
+               SELECT core_price.ticker,
                       core_price.value,
                       sum(core_dividend.value)
                  FROM core_price
                  JOIN last_prices ON core_price.date = last_prices.date
-            LEFT JOIN core_dividend ON last_prices.ticker_id = core_dividend.ticker_id
-                WHERE core_price.ticker_id = last_prices.ticker_id
+            LEFT JOIN core_dividend ON last_prices.ticker = core_dividend.ticker_id
+                WHERE core_price.ticker = last_prices.ticker
                   AND year(core_dividend.declared_at) = year(last_prices.date)
-             GROUP BY core_price.ticker_id
+             GROUP BY core_price.ticker
         """.format(where=where)
 
         with connection.cursor() as cursor:
