@@ -37,8 +37,8 @@ def calculate(request):
                  FROM core_price
                  JOIN last_prices ON core_price.date = last_prices.date
             LEFT JOIN core_dividend ON last_prices.ticker = core_dividend.ticker_id
-                WHERE core_price.ticker = last_prices.ticker
                   AND year(core_dividend.declared_at) = year(last_prices.date)
+                WHERE core_price.ticker = last_prices.ticker
              GROUP BY core_price.ticker
         """.format(where=where)
 
@@ -49,7 +49,8 @@ def calculate(request):
         dividend_paid = 0
         portfolio_cost = 0
         for ticker, price, dividends in rows:
-            dividend_paid += dividends * assets[ticker]
+            if dividends is not None:
+                dividend_paid += dividends * assets[ticker]
             portfolio_cost += price * assets[ticker]
 
         result.append({
